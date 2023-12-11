@@ -14,7 +14,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+const errorHandler = (error,res)=>{
+    console.log(error);
+    res.status(500).json({
+        status:'failed',
+        message:'internal error'
+    })
+}
 app.get("/health", (req, res) => {
   res.json({
     status: "success",
@@ -45,10 +51,7 @@ app.post('/register',async(req,res) => {
     } 
     catch (error) {
         console.log(error)
-       res.json({
-        status:'unsuccessful',
-        message:'user not created successfully'
-       }) 
+        errorHandler(error,res);
     }
 })
 
@@ -82,10 +85,7 @@ app.post('/login',async (req,res)=>{
         
     } catch (error) {
         console.log(error);
-        res.json({
-            status:'error',
-            message:'login failed'
-        })
+        errorHandler(error,res);
     }
 })
 
