@@ -3,24 +3,26 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 const jwt = require ('jsonwebtoken')
+const { JsonWebTokenError } = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
+const authRoutes = require ('./routes/authRoutes')
 
+//models
 const User= require('./models/userModel');
-const { JsonWebTokenError } = require("jsonwebtoken");
+const Job = require('./models/jobModel')
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const errorHandler = (error,res)=>{
-    console.log(error);
-    res.status(500).json({
-        status:'failed',
-        message:'internal error'
-    })
-}
+//middlewares
+const errorHandler= require ('./middlewares/errorHandler')
+
+//routes
+app.use(authRoutes)
+
 app.get("/health", (req, res) => {
   res.json({
     status: "success",
@@ -42,7 +44,8 @@ app.post('/register',async(req,res) => {
             message:'user created successfully'
            }) 
         }
-        else{
+        else if (user){
+            console.log ( user )
             res.json({
                 status : 'unsuccessful',
                 message: 'email already registered'
@@ -89,6 +92,15 @@ app.post('/login',async (req,res)=>{
     }
 })
 
+
+
+
+app.use((req,res)=>{
+    res.status(404).json({
+        status: 'error',
+        message: 'page not found'
+    })
+})
 app.listen(process.env.PORT, () => {
   mongoose
     .connect(process.env.mongoDBUrl)
