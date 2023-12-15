@@ -38,10 +38,12 @@ app.post('/register',async(req,res) => {
         const user= await User.findOne({email})        
         if(!(user)){
             const encryptedPassword= await bcrypt.hash(password,10)
-            await User.create({name,email,phone,password:encryptedPassword})  
-            res.json({
+            const createdUser=await User.create({name,email,phone,password:encryptedPassword})  
+            console.log(createdUser)
+            res.status(200).json({
             status:'successful',
-            message:'user created successfully'
+            message:'user created successfully',
+            userData:createdUser
            }) 
         }
         else if (user){
@@ -66,10 +68,11 @@ app.post('/login',async (req,res)=>{
             let isPasswordCorrect = await bcrypt.compare(password,isValidUser.password)
             if(isPasswordCorrect){
                 const jwtoken = jwt.sign(isValidUser.toJSON(),process.env.jwtSecretKey,{expiresIn:60*60*24})
-                res.json({
+                res.status(200).json({
                     status:'successful',
                     message:'logged in successfully',
-                    jwtoken
+                    jwtoken,
+                    userData:isValidUser
                 })
             }
             else{
@@ -92,15 +95,13 @@ app.post('/login',async (req,res)=>{
     }
 })
 
-
-
-
 app.use((req,res)=>{
     res.status(404).json({
         status: 'error',
         message: 'page not found'
     })
 })
+
 app.listen(process.env.PORT, () => {
   mongoose
     .connect(process.env.mongoDBUrl)

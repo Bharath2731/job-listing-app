@@ -10,7 +10,7 @@ const isUserAuthorized = (req,res,next)=>{
         const { jwtoken }= req.headers
         let decodedUser = jwt.verify(jwtoken,process.env.jwtSecretKey);   
         if (decodedUser){
-            req.user = decodedUser;
+            req.body.user = decodedUser;
             next()
         }
     } catch (error) {

@@ -17,7 +17,8 @@ router.post('/jobs',isUserAuthorized,async (req,res)=>{
 
             res.status(200).json({
                 status:'successful',
-                message: 'job post created successfully'
+                message: 'job post created successfully',
+                // userData: req.body.user
             })
 
         }
@@ -33,5 +34,26 @@ router.post('/jobs',isUserAuthorized,async (req,res)=>{
         errorHandler(error,res)
     }
 })
+
+
+router.patch('/jobs/:id',isUserAuthorized,async(req,res)=>{
+    try {
+        const id = req.params.id;
+        const data= req.body;
+        const updatedJob = await Job.findByIdAndUpdate(id,data,{new:true,runValidators:true})
+        res.status(200).json({
+            status:'successful',
+            message:'Job post updated successfully'
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status:'error',
+            message:'some internal error'
+        })
+    }
+})
+
 
 module.exports = router
