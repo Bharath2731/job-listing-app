@@ -55,5 +55,29 @@ router.patch('/jobs/:id',isUserAuthorized,async(req,res)=>{
     }
 })
 
-
+router.get('/jobs/:skills',isUserAuthorized,async(req,res)=>{
+    try {
+        const {jobTitle}= req.query;
+        const {skills}=req.params;
+        const skillsArray = skills.split(',')
+        console.log(skillsArray)
+        let jobWithSkills = await Job.find({skillsRequired:{ $in: skillsArray}})
+        if(jobTitle){
+            jobWithSkills= jobWithSkills.filter((job)=>{
+                return job.jobPosition === jobTitle;
+            })
+        }
+        res.status(200).json({
+            status:'successfull',
+            message:'got the jobs with the filters',
+            data: jobWithSkills
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status:'unsuccessful',
+            message:'unable to get the data'
+        })
+    }
+})
 module.exports = router
