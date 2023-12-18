@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 const jwt = require ('jsonwebtoken')
+const cors = require ('cors')
 const { JsonWebTokenError } = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -14,10 +15,11 @@ const Job = require('./models/jobModel')
 
 const app = express();
 
+//middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
-//middlewares
 const errorHandler= require ('./middlewares/errorHandler')
 
 //routes
@@ -38,17 +40,19 @@ app.post('/register',async(req,res) => {
         const user= await User.findOne({email})        
         if(!(user)){
             const encryptedPassword= await bcrypt.hash(password,10)
-            const createdUser=await User.create({name,email,phone,password:encryptedPassword})  
+            const createdUser=await User.create({name,email,phone,password:encryptedPassword})
+            const jwtoken = jwt.sign(createdUser.toJSON(),process.env.jwtSecretKey,{expiresIn:60*60*24})  
             console.log(createdUser)
             res.status(200).json({
             status:'successful',
             message:'user created successfully',
+            jwtoken,
             userData:createdUser
            }) 
         }
         else if (user){
             console.log ( user )
-            res.json({
+            res.status(400);json({
                 status : 'unsuccessful',
                 message: 'email already registered'
             })
@@ -76,7 +80,7 @@ app.post('/login',async (req,res)=>{
                 })
             }
             else{
-                res.json({
+                res.status(400).json({
                     status:'error',
                     message: 'incorrect password'
                 })

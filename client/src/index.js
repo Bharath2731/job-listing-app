@@ -3,10 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Toaster } from 'react-hot-toast';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Toaster toastOptions={{
+    className: '',
+    success:{style: {
+      border: '1px solid rgb(49, 173, 230)',
+      padding: '10px',
+      color: 'rgb(49, 173, 230)',
+      fontFamily: 'DM Sans', 
+    }},error:{
+      style: {
+        border: '1px solid #ED5353',
+        padding: '10px',
+        color: '#ED5353',
+        fontFamily: 'DM Sans'
+      }
+    }
+    }}/>
     <App />
   </React.StrictMode>
 );
