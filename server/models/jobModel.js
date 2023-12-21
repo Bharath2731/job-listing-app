@@ -15,6 +15,8 @@ const jobSchema = new Schema({
   aboutCompany:  { type: String, required: true },
   skillsRequired:{ type: [String], required: true },
   information:   { type: String },
+  createdBy : {type: String ,required:true},
+  createdOn : {type : String, required : true}
 });
 
 const Job =mongoose.model ('Job',jobSchema);

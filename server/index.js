@@ -87,7 +87,7 @@ app.post('/login',async (req,res)=>{
             }
         }
         else{
-            res.json({
+            res.status(400).json({
                 status:'error',
                 message:'email doesnot exist'
             })

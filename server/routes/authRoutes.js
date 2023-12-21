@@ -6,6 +6,25 @@ const errorHandler = require('../middlewares/errorHandler')
 const Job = require ('../models/jobModel')
 const router = express.Router()
 
+router.get('/jobs',isUserAuthorized,async(req,res)=>{
+    try {
+        const jobs = await Job.find({});
+        res.status(200).json({
+            status:'successfull',
+            message:'fetched all jobs successfully',
+            data:jobs
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            status:'error',
+            message:'some internal error'
+        })
+
+    }
+})
+
 router.post('/jobs',isUserAuthorized,async (req,res)=>{
     try {
         const {companyName,addLogoUrl,jobPosition, monthlySalary,jobType,remoteOrOffice,location, jobDescription,aboutCompany,skillsRequired, information} = req.body
@@ -13,7 +32,7 @@ router.post('/jobs',isUserAuthorized,async (req,res)=>{
         if (companyName && addLogoUrl && jobPosition && monthlySalary && jobType && remoteOrOffice && location && jobDescription && aboutCompany && skillsRequired && information)
         {
             const skillsRequiredInArray = skillsRequired.split(',');
-            await Job.create({companyName,addLogoUrl,jobPosition, monthlySalary,jobType,remoteOrOffice,location, jobDescription,aboutCompany,skillsRequired:skillsRequiredInArray, information})
+            await Job.create({companyName,addLogoUrl,jobPosition, monthlySalary,jobType,remoteOrOffice,location, jobDescription,aboutCompany,skillsRequired:skillsRequiredInArray, information ,createdBy: req.body.user.name ,createdOn: new Date()})
 
             res.status(200).json({
                 status:'successful',
