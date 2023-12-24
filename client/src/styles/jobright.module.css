@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.outer{
+    width: 40vw;
+    height: 100vh;
+    background-image: url('../images/jobRight.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.heading{
+    text-align: center;
+    color: white;
+    font-family: DM Sans;
+    letter-spacing: 2px;
+    padding-top: 5vh;
+}

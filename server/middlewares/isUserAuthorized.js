@@ -9,6 +9,7 @@ const isUserAuthorized = (req,res,next)=>{
     try {
         const { jwtoken }= req.headers
         let decodedUser = jwt.verify(jwtoken,process.env.jwtSecretKey);   
+        console.log(decodedUser)
         if (decodedUser){
             req.body.user = decodedUser;
             next()
