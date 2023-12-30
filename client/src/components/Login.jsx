@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import styles from "../styles/login.module.css";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import toast from "react-hot-toast";
 function Login() {
+  const navigate = useNavigate()
     const [email,setEmail]= useState('');
     const [password,setPassword]= useState('')
 
@@ -19,8 +20,9 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:4000/login' ,frontendData)
             console.log(response.data)
-            toast.success('log in successful')
+            toast.success('login successful')
             localStorage.setItem('data',JSON.stringify(response.data))
+            navigate('/')
         } catch (error) {
             toast.error('invalid credentials')
         }

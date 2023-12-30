@@ -1,0 +1,111 @@
+.outer {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: DM Sans;
+}
+.container {
+  padding: 0 0 0 0;
+  height: 15vh;
+  min-width: 55%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
+  margin-top: 3vh;
+  margin-bottom: 10px;
+  display: flex;
+}
+.left {
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 20px;
+}
+.leftupper {
+  display: flex;
+}
+.leftupper > img {
+  height: 55px;
+  width: 55px;
+  border-radius: 10px;
+}
+.title {
+  margin-left: 20px;
+  letter-spacing: 1.2px;
+}
+.locAndSal {
+  display: flex;
+  margin-top: 10px;
+  letter-spacing: 1.2px;
+}
+.location {
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1.2px;
+}
+.locationIcon {
+  margin: 0 5px;
+  height: 20px;
+  width: 20px;
+}
+.options {
+  margin-top: 10px;
+  justify-content: space-evenly;
+  color: #ed5353;
+  letter-spacing: 1px;
+}
+.options > span {
+  margin-right: 20px;
+}
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.skillcards {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.skillcard {
+  border-radius: 1.433px;
+  background: #fee;
+  margin: 0 20px 0 10px;
+  padding: 5px 12px;
+  letter-spacing: 1px;
+}
+.rightbottom {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.rightbottom > button {
+  font-size: medium;
+  margin: 0 20px 0 10px;
+  padding: 5px 15px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+.editbtn {
+  color: #ed5353;
+  text-align: center;
+  font-family: DM Sans;
+  border-radius: 3.922px;
+  border: 2px solid #ed5353;
+  background-color: white;
+}
+.viewbtn {
+  color: #fff;
+  text-align: center;
+  border-radius: 3.922px;
+  background: #ed5353;
+  border: 2px solid #ed5353;
+}
+.rightbottom > button:hover{
+    box-shadow: 0px 0px 5px 2px #f38888;
+    padding: 5px 16px;
+}
