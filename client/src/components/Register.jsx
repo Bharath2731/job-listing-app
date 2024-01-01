@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/register.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import toast from 'react-hot-toast';
 
@@ -10,6 +10,8 @@ function Register() {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
+
+  const navigate = useNavigate();
 
   function nameHandler(e) {
     setName(e.target.value);
@@ -23,9 +25,7 @@ function Register() {
   function passwordHandler(e) {
     setPassword(e.target.value);
   }
-  function isMobileValid (string){
-   
-  }
+  
   const handleSubmit = async (e)=>{
     e.preventDefault()
     if (name&& email && mobile && password && checked){
@@ -41,6 +41,8 @@ function Register() {
             console.log(response.data)
             toast.success(`sign up successful`)
             localStorage.setItem('data',JSON.stringify(response.data))
+            navigate('/')
+
         } catch (error) {
             // console.log(error)
             toast.error('email already exists,sign up failed')

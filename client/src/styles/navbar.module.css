@@ -10,7 +10,7 @@
   top: 0;
   align-items: center;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   height: 13vh;
   background-image: linear-gradient(to right ,#ED5353 ,#ff7575 );
   border-radius: 0px 0px 40px 40px;

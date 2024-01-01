@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   font-family: DM Sans;
+  background-color: #FFEFEF;
 }
 .container {
   padding: 0 0 0 0;
@@ -15,6 +16,7 @@
   margin-top: 3vh;
   margin-bottom: 10px;
   display: flex;
+  background-color: white;
 }
 .left {
   min-width: 50%;
@@ -45,6 +47,7 @@
   display: flex;
   align-items: center;
   letter-spacing: 1.2px;
+  color: #9C9C9C;;
 }
 .locationIcon {
   margin: 0 5px;
@@ -88,7 +91,7 @@
   margin: 0 20px 0 10px;
   padding: 5px 15px;
   letter-spacing: 1px;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .editbtn {
   color: #ed5353;

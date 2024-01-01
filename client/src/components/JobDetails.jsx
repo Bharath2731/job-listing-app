@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import styles from "../styles/jobdetails.module.css";
-import locationIcon from "../images/location.svg";
+import locationPin from '../images/location-pin.png'
 import { viewJobContext } from "../App";
-function JobDetails({job}) {
+import { useNavigate } from "react-router-dom";
+function JobDetails({job,data}) {
+    const navigate = useNavigate()
     const [viewJob,setViewJob] = useContext(viewJobContext)
     const handleClick = () => {
         console.log(job._id); // Log job ID when JobDetails component is clicked
@@ -10,6 +12,7 @@ function JobDetails({job}) {
     const handleViewDetails=()=>{
         setViewJob(job)
         console.log(viewJob)
+        navigate('/viewjob')
     }
     return (
     <div>
@@ -29,7 +32,7 @@ function JobDetails({job}) {
                   <span>INR {job.monthlySalary}/month</span>
                   <span className={styles.location}>
                     <img
-                      src={locationIcon}
+                      src={locationPin}
                       alt=""
                       className={styles.locationIcon}
                     />
@@ -63,7 +66,7 @@ function JobDetails({job}) {
                 }
             </div>
             <div className={styles.rightbottom}>
-                <button className={styles.editbtn } onClick={handleViewDetails}>Edit job</button>
+                {(data?.userData)?(<button className={styles.editbtn } onClick={handleViewDetails}>Edit job</button>):''}
                 <button className={styles.viewbtn} onClick={handleViewDetails}>View details</button>
             </div>
 

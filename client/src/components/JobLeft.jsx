@@ -33,9 +33,14 @@ function JobLeft() {
   };
   const handleSubmit =async (e) => {
     e.preventDefault();
+    const data =  JSON.parse(localStorage.getItem('data'))
+
+    if(data.userData==null){
+      toast.error('please login');
+      return;
+    }
     if(allFieldsFilled (formData)){
         try {
-            const data =  JSON.parse(localStorage.getItem('data'))
             console.log(data.jwtoken)
             console.log(formData)
             const response =await axios.post('http://localhost:4000/jobs',formData,{
@@ -45,6 +50,7 @@ function JobLeft() {
                 
             })
             toast.success('successfully added job-post')
+            
         } catch (error) {
             console.log(error)
             toast.error('failed to add job-post')

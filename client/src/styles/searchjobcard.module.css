@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #FFEFEF;
 }
 .container {
   margin: 17vh 17vh 0 17vh;
@@ -19,6 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  background-color: white;
 }
 .inputcontainer {
   width: 80%;
@@ -132,11 +134,11 @@
   font-family: DM Sans;
   letter-spacing: 1px;
   color: white;
-  background-color: #FF6B6B;
+  background-color: #ED5353;
   border-radius: 7px;
   border: solid 1px #FF6B6B;
   font-size: medium;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .addBtn:hover{
   box-shadow: 0 0 10px 1px #f38888;

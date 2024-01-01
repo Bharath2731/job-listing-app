@@ -6,7 +6,7 @@ const errorHandler = require('../middlewares/errorHandler')
 const Job = require ('../models/jobModel')
 const router = express.Router()
 
-router.get('/jobs',isUserAuthorized,async(req,res)=>{
+router.get('/jobs',async(req,res)=>{
     try {
         const jobs = await Job.find({});
         res.status(200).json({
@@ -98,7 +98,7 @@ router.get('/jobs/:skills',isUserAuthorized,async(req,res)=>{
     }
 })
 
-router.get('/jobs/byId/:id',isUserAuthorized,async(req,res)=>{
+router.get('/jobs/byId/:id',async(req,res)=>{
     try {
         const {id} = req.params;
         console.log(id)
