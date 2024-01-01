@@ -18,7 +18,7 @@ function Login() {
         e.preventDefault();
         const frontendData = {email,password}
         try {
-            const response = await axios.post('http://localhost:4000/login' ,frontendData)
+            const response = await axios.post('https://job-listing-app-server.onrender.com/login' ,frontendData)
             console.log(response.data)
             toast.success('login successful')
             localStorage.setItem('data',JSON.stringify(response.data))

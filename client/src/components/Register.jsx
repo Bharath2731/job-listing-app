@@ -37,7 +37,7 @@ function Register() {
         
         const frontendUser = {name,email,phone:mobile,password}
         try {
-            const response = await axios.post ('http://localhost:4000/register',frontendUser)
+            const response = await axios.post ('https://job-listing-app-server.onrender.com/register',frontendUser)
             console.log(response.data)
             toast.success(`sign up successful`)
             localStorage.setItem('data',JSON.stringify(response.data))

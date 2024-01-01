@@ -43,7 +43,7 @@ function JobLeft() {
         try {
             console.log(data.jwtoken)
             console.log(formData)
-            const response =await axios.post('http://localhost:4000/jobs',formData,{
+            const response =await axios.post('https://job-listing-app-server.onrender.com/jobs',formData,{
                 headers:{
                     'jwtoken' : data.jwtoken
                 }

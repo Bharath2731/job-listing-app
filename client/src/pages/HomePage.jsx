@@ -12,7 +12,7 @@ function HomePage() {
     try {
         const fetchData = async ()=>{
           const userData = JSON.parse(localStorage.getItem('data'))
-          const response = await axios.get('http://localhost:4000/jobs')
+          const response = await axios.get('https://job-listing-app-server.onrender.com/jobs')
           console.log(response.data.data)
           setJobs(response.data.data)
         }
