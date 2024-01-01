@@ -12,8 +12,7 @@
 .container {
   margin: 17vh 17vh 0 17vh;
   height: 25vh;
-  max-width: 55%;
-  min-width: 55%;
+  width: 60%;
   border-radius: 5px;
   box-shadow: 0 0 10px 5px rgba(255, 32, 32, 0.25);
   display: flex;
@@ -38,7 +37,7 @@
 .input {
   margin-left: 5px;
   font-family: DM Sans;
-  font-size: medium;
+  font-size: small;
   letter-spacing: 1px;
   border: none;
   width: 100%;
@@ -71,7 +70,7 @@
   color: #9C9C9C;
   font-family: Roboto;
   letter-spacing: 1px;
-  font-size: medium;
+  font-size: small;
   border-radius: 9px;
   border: 2px solid #cecece;
   background: #fff;
@@ -84,13 +83,14 @@
     align-items: center;
     margin: 0 12px;
     min-width:max-content;
+    background-color: #FFEEEE;
 }
 .chipspara{
  background-color: #FFEEEE;
  color: black;
  padding: 7px;
  text-align: center;
- font-size: medium;
+ font-size: small;
  font-family: DM Sans;
  letter-spacing: 1px;
  border-radius: 2px 0px 0px 2px;
@@ -129,6 +129,7 @@
   background-color: #db5d5d;
 }
 .addBtn{
+  font-size: small;
   height: min-content;
   padding: 7px 12px;
   font-family: DM Sans;
@@ -137,7 +138,6 @@
   background-color: #ED5353;
   border-radius: 7px;
   border: solid 1px #FF6B6B;
-  font-size: medium;
   transition: all 0.2s;
 }
 .addBtn:hover{

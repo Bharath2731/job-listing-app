@@ -46,7 +46,7 @@
 }
 .userdetails> span{
     margin: 0 20px;
-    font-size: large;
+    font-size: medium;
     letter-spacing: 1px;
     transition: transform 0.3s;
 }
@@ -57,7 +57,7 @@
     margin: 30px 10px;
     padding: 12px 20px;
     border-radius: 5px;
-    font-size: medium;
+    font-size: small;
     letter-spacing: 2px;
     font-weight: bold;
     color:#ED5353 ;
@@ -73,7 +73,7 @@
     margin: 30px 10px;
     padding: 12px 20px;
     border-radius: 5px;
-    font-size: medium;
+    font-size: small;
     letter-spacing: 2px;
     font-weight: bold;
     color:white ;
