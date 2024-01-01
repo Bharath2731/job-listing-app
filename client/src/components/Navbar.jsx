@@ -25,7 +25,7 @@ function Navbar({data,setData}) {
               >
                 Logout
               </span>
-              <span>Hello!{data.userData.name}</span>
+              <span>Hello! {data.userData.name.toUpperCase()}</span>
               <img src={profilePic} alt="" />
             </div>
           ) : (

@@ -32,6 +32,13 @@ app.get("/health", (req, res) => {
     time: new Date()
   });
 });
+app.get("/", (req, res) => {
+  res.json({
+    status: "success",
+    message: "server is up and running",
+    time: new Date()
+  });
+});
 
 app.post('/register',async(req,res) => {
     try {
